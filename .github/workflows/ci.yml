@@ -1,17 +1,21 @@
-name: First Pipeline
+name: First CI Pipeline
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout Code
+      uses: actions/checkout@v4
 
-      - name: Print message
-        run: echo "Hello DevOps"
+    - name: Print Message
+      run: echo "Hello from GitHub Actions"
+
+    - name: Show Files
+      run: ls -R
