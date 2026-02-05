@@ -3,7 +3,7 @@ name: Auto Commit Version
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   update-version:
@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update version file
         run: |
