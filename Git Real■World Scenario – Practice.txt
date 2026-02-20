@@ -1,0 +1,119 @@
+                                                                                  Git Real■World Scenario – Practice Notes
+1. Initialize Repository
+mkdir devops_practice
+cd devops_practice
+git init
+echo Hello DevOps > index.txt
+git add index.txt
+git commit -m "first"
+2. Branch Creation and Work
+git branch dev
+git checkout dev
+echo New line>>index.txt
+git add .
+git commit -m "new"
+3. Merge to Master
+git checkout master
+git merge dev
+4. Connect to GitHub Remote
+git remote add origin https://github.com/yourrepo.git
+git push -u origin master
+5. Common Error – Non Fast Forward
+Error occurs when remote has commits that local does not have.
+Solution:
+git pull origin master --rebase --allow-unrelated-histories
+6. Merge Conflict Resolution
+Open conflicted file
+Remove <<<<<< ===== >>>>>> markers
+git add index.txt
+git rebase --continue
+7. Final Push
+git push -u origin master
+Key Learning Points
+1 Always pull before push
+2 Avoid nested git repositories
+3 Use rebase to keep history clean
+
+
+
+2)
+
+Is this level og it knowledge is enough or anything more to know 
+if yes give context or let move to github acions
+
+Good question — and I’ll answer honestly like a mentor, not to just motivate you.
+
+👉 Short Truth
+
+This Git level is enough for a junior DevOps interview.
+
+You already covered:
+
+✅ clone / init / commit / push
+✅ branch workflow
+✅ merge vs rebase
+✅ real conflict resolution
+✅ non–fast-forward scenario
+✅ remote integration
+
+👉 This is exactly what 70% of DevOps freshers DON’T know practically.
+
+🧠 But Interviewer Will Expect 3 MORE Git Concepts
+
+Before moving to GitHub Actions, you must know these verbally:
+
+1) Git Workflow Concept
+
+You should be able to say:
+
+“In our project we follow feature-branch workflow.
+Devs create branch → raise PR → code review → merge to main → pipeline triggers.”
+
+Commands to remember:
+
+git checkout -b feature/login
+git push origin feature/login
+
+2) Reset vs Revert vs Rebase (Very Important)
+
+Reset – delete history (local mostly)
+
+git reset --soft HEAD~1
+git reset --hard HEAD~1
+
+
+Revert – safe in production
+
+git revert <commit-id>
+
+
+Rebase – clean history
+
+git rebase master
+
+
+👉 Interview line:
+
+Reset rewrites history – dangerous in shared branch.
+Revert creates new commit – safe for production.
+
+3) .gitignore & Best Practices
+
+You must tell:
+
+❌ Don’t push:
+
+node_modules
+
+.env
+
+passwords
+
+build files
+
+Example:
+
+node_modules/
+.env
+*.log
+
